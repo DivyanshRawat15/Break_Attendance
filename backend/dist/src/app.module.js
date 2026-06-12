@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
+require("reflect-metadata");
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
@@ -19,16 +20,18 @@ exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot({ isGlobal: true }),
+            config_1.ConfigModule.forRoot({
+                isGlobal: true,
+            }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'mysql',
                 host: process.env.DB_HOST || 'localhost',
-                port: parseInt(process.env.DB_PORT || '3306'),
+                port: Number(process.env.DB_PORT) || 3306,
                 username: process.env.DB_USERNAME || 'root',
                 password: process.env.DB_PASSWORD || '',
                 database: process.env.DB_NAME || 'break_attendance',
-                entities: [__dirname + '/**/*.entity{.ts,.js}'],
-                synchronize: true,
+                autoLoadEntities: true,
+                synchronize: false,
             }),
             users_module_1.UsersModule,
             attendance_module_1.AttendanceModule,
