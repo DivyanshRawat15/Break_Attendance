@@ -1,8 +1,8 @@
 import { AttendanceService } from './attendance.service';
-import { Attendance } from '../models/attendance.model';
+import { AttendanceEntity } from './attendance.entity';
 export declare class AttendanceController {
     private readonly attendanceService;
     constructor(attendanceService: AttendanceService);
-    getByDate(date: string): Promise<Attendance[]>;
-    save(body: Partial<Attendance>): Promise<Attendance[]>;
+    getByDate(date: string): Promise<AttendanceEntity[]>;
+    save(body: Partial<AttendanceEntity>): Promise<AttendanceEntity[]>;
 }

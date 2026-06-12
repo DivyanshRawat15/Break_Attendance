@@ -7,7 +7,10 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "build": "nest build",
-    "lint": "eslint \"src/**/*.ts\" --fix"
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate src/db/migrations/Migration -d src/db/data-source.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/db/data-source.ts",
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/db/data-source.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -25,6 +28,8 @@
     "@nestjs/schematics": "^10.0.0",
     "@types/node": "^20.0.0",
     "eslint": "^8.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0",
+    "tsconfig-paths": "^4.2.0"
   }
 }
